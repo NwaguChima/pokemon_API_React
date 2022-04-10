@@ -1,0 +1,36 @@
+.filter {
+  height: 6rem;
+  background-color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__input {
+    height: 80%;
+    width: 50rem;
+    overflow: hidden;
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    -ms-border-radius: 5rem;
+    -o-border-radius: 5rem;
+
+    input {
+      height: 100%;
+      width: 100%;
+      outline: none;
+      padding-left: 1rem;
+
+      &::placeholder {
+        color: #999;
+        font-size: 1.5rem;
+        font-style: italic;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 40rem;
+      background-color: red;
+    }
+  }
+}

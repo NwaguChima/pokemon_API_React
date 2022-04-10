@@ -4,14 +4,23 @@ type GlobalContextProviderProps = {
   children: React.ReactNode;
 };
 
-type GlobalContextType = {};
+type GlobalContextType = {
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+};
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
 
 export const GlobalContextProvider = ({
   children,
 }: GlobalContextProviderProps) => {
-  return <GlobalContext.Provider value={{}}>{children}</GlobalContext.Provider>;
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  return (
+    <GlobalContext.Provider value={{ searchTerm, setSearchTerm }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 };
 
 export default GlobalContext;
