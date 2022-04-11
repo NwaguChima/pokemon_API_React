@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__image {
+    height: 5rem;
+  }
+
+  &__text {
+    text-transform: uppercase;
+  }
+}
