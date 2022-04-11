@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import { getPokemon, getPokemonDetails } from "../../Data/getPokeman";
+import Card from "../Cards/Cards";
 import GlobalContext from "../../context/GlobalContext";
 import styles from "./Container.module.scss";
 
@@ -63,6 +64,7 @@ const Container = () => {
   return (
     <main className={styles.container}>
       <div className={styles.container__box}>
+        <Card pokemon={filteredSearch} />
         <div className={styles.container__page}>
           <button
             onClick={(event) => handleChangeUrl(event, "prev")}
