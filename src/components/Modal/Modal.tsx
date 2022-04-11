@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 
 import { AiOutlineClose } from "react-icons/ai";
 import GlobalContext from "../../context/GlobalContext";
+import ModalContent from "../ModalContent/ModalContent";
 import Spinner from "../Spinner/Spinner";
 import styles from "./Modal.module.scss";
 
@@ -26,7 +27,9 @@ const Modal: React.FC<any> = forwardRef(({ children }, ref) => {
               <h1>Loading...</h1>
               <Spinner />
             </div>
-          ) : null}
+          ) : (
+            <ModalContent />
+          )}
         </div>
       </div>,
       document.getElementById("modal__root")!
