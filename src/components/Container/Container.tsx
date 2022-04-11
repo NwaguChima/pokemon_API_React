@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import { getPokemon, getPokemonDetails } from "../../Data/getPokeman";
@@ -82,7 +82,7 @@ const Container = () => {
             </i>
             <span>Prev</span>
           </button>
-          <p>{page}</p>
+          <p data-testid="page">{page}</p>
           <button
             onClick={(event) => handleChangeUrl(event, "next")}
             className={styles.container__page__next}
