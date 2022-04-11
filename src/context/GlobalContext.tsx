@@ -9,10 +9,12 @@ type GlobalContextType = {
   currentPokemon: any | undefined;
   searchTerm: string;
   loading: boolean;
+  error: any;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentPokemon: React.Dispatch<React.SetStateAction<any | undefined>>;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setError: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -24,6 +26,7 @@ export const GlobalContextProvider = ({
   const [currentPokemon, setCurrentPokemon] = useState<any | undefined>();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<any>();
 
   return (
     <GlobalContext.Provider
@@ -32,10 +35,12 @@ export const GlobalContextProvider = ({
         currentPokemon,
         searchTerm,
         loading,
+        error,
         setShowModal,
         setCurrentPokemon,
         setSearchTerm,
         setLoading,
+        setError,
       }}
     >
       {children}

@@ -14,25 +14,30 @@ const Container = () => {
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
   const [page, setPage] = useState(1);
-  const { setLoading, searchTerm } = useContext(GlobalContext)!;
+  const { setLoading, searchTerm, error, setError } =
+    useContext(GlobalContext)!;
   let term = searchTerm.length >= 3 ? searchTerm : "";
 
   useEffect(() => {
     setLoading(true);
 
     async function laodPokemon() {
-      let data;
-      if (term) {
-        data = await getPokemon(
-          "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100000"
-        );
-      } else {
-        data = await getPokemon(url);
+      try {
+        let data;
+        if (term) {
+          data = await getPokemon(
+            "https://pokeapi.co/api/v2/pokemon?offset=0&limit=100000"
+          );
+        } else {
+          data = await getPokemon(url);
+        }
+        setNextUrl(data.next);
+        setPrevUrl(data.previous);
+        const pokemonDetails = await getPokemonDetails(data.results);
+        setPokmonData(pokemonDetails);
+      } catch (error) {
+        setError(error);
       }
-      setNextUrl(data.next);
-      setPrevUrl(data.previous);
-      const pokemonDetails = await getPokemonDetails(data.results);
-      setPokmonData(pokemonDetails);
     }
 
     laodPokemon();
@@ -61,6 +66,7 @@ const Container = () => {
       pokemon.name.toLowerCase().includes(term.toLocaleLowerCase())
     );
 
+  if (error) return <div>{error}</div>;
   return (
     <main className={styles.container}>
       <div className={styles.container__box}>
