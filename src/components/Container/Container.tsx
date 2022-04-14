@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import { getPokemon, getPokemonDetails } from "../../Data/getPokeman";
@@ -42,6 +42,8 @@ const Container = () => {
 
     laodPokemon();
     setLoading(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, searchTerm]);
 
   const handleChangeUrl = (
